@@ -1,0 +1,275 @@
+%%%%%%%%%%%%%%%%% description %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% this preamble extension configures your citation style to be
+% compliant with the Industrial Management (FHJ) style
+% currently only English is supported.
+% However, feel free to change corresponding strings in this file
+% to compyl with the German (or other) language
+%
+% PREREQUISITES:
+% - biblatex is used (see below)
+% - references are in the same directory (references.bib)
+% - include/input this file in your preamble
+%
+% USAGE:
+%	single citation:
+%	\iwicite[Cf.][pp. 50-60, 234]{Test2016}
+%
+%	multiple citations
+% 	\iwicites[Cf.][pp. 50-60, 234]{Test2016}[Cf.][pp. 50-60, 234]{Batini2006}
+%
+%	url single citation:
+%	\iwiurlcite[Cf.][]{Anaconda2019}
+%
+%	url multiple citations:
+%	\iwiurlcites[Cf.][]{Anaconda2019}[Cf.][]{Vantara2018}
+%
+% 	citation for explicit usage in foot notes (no automatic foot note):
+%	\footnote{[Note] It's a foot note \iwiciteintext[Cf.][p. 60]{Batini2006}.}
+%
+%
+% if you find any issues, please send an e-mail to
+% raphael.hartner2@fh-joanneum.at
+
+
+% Biblatex
+% ---------------------------------------------------------------------
+\usepackage{csquotes}		% context sensitive quotation; recommended for usage with Biblatex
+% Note: date, origdate, eventdate, and urldate require yyyy-mm-dd format
+% dd or mm-dd may be omitted
+\usepackage[
+    backend=biber,
+    alldates=iso,		% default: short, e.g. 08/15/2010
+    datezeros=true,
+    style=authoryear-icomp,	% Harvard citation style
+    backref,            % if you like (cit. on p. 2)
+%   sorting=nty		this is default: sort by name, title, year
+%   sortlocale=de_DE	set according to your needs
+    natbib=true,		% if you want to use natbib compatible citation commands; do _not_ use package natbib!
+    maxbibnames=1000,		% show all authors in the bibliography
+    maxcitenames=3, % show max 3 authors in text-body
+    mincitenames=1, % list of more than 3 authors are truncated to the first author
+%    autolang=hyphen,
+%    block=ragged % could be used to address hyphnation issues
+]{biblatex}
+% Note the default option: ibidpage=true for ibid / ebd
+
+% see: https://tex.stackexchange.com/questions/134191/line-breaks-of-long-urls-in-biblatex-bibliography
+\setcounter{biburllcpenalty}{0}
+\setcounter{biburlucpenalty}{0}
+\setcounter{lownamepenalty}{0}
+\setcounter{highnamepenalty}{0}
+\setcounter{abbrvpenalty}{0}
+\setcounter{biburlnumpenalty}{0}
+
+% the '%' character ensures that unwanted spaces are ignored
+%\setunit{\addcomma}
+
+%%%% change default german urlseen value to comply with IWI-standard
+\DefineBibliographyStrings{german}{%
+	urlseen = {Abrufdatum},%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%% drivers for corresponding entry types %%%
+\DeclareBibliographyDriver{book}{
+	\printnames{author}%
+	\newunit\newblock
+	\printfield{title}%
+	\newunit\newblock
+	\printfield{edition}\addcomma%
+	\newunit
+	\printlist{publisher}\addcomma%
+	\newunit
+	\printlist{location}%
+	\printfield{year}%
+	\finentry
+}
+
+\DeclareBibliographyDriver{incollection}{
+	\printnames{author}%
+	\newunit\newblock
+	\printfield{labeltitle}%
+	\newunit\newblock
+	\addcomma\addspace
+	\bibstring{in}\addcolon\addspace
+	\printnames{editor}\addcolon%
+	\newunit\newblock
+	\printfield{booktitle}\addcomma%
+	\newunit\newblock
+	\printfield{edition}\addcomma%
+	\newunit
+	\printlist{publisher}\addcomma%
+	\newunit
+	\printlist{location}%
+	\printfield{year}\addcomma%
+	\newunit\newblock
+	\printfield{pages}
+	\finentry
+}
+
+\DeclareBibliographyDriver{article}{
+	\printnames{author}%
+	\newunit\newblock
+	\printfield{labeltitle}%
+	\newunit\newblock
+	\addcomma\addspace
+	\bibstring{in}\addcolon\addspace
+	\printfield{journaltitle}\addspace%
+	\newunit\newblock
+	\printfield{volume}\addcomma%
+	\newunit\newblock
+	\printfield{number}\addcomma%
+	\newunit\newblock
+	\printfield{year}\addcomma%
+	\newunit\newblock
+	\printfield{pages}\addcomma
+	\newunit\newblock
+	\printfield{doi}
+	\finentry
+}
+
+\DeclareBibliographyDriver{inproceedings}{
+	\printnames{author}%
+	\newunit\newblock
+	\printfield{labeltitle}%
+	\newunit\newblock
+	\addcomma\addspace
+	\bibstring{in}\addcolon\addspace
+	\printfield{booktitle}\addspace%
+	\newunit\newblock
+	\printfield{volume}\addcomma%
+	\newunit\newblock
+	\printfield{year}\addcomma%
+	\newunit\newblock
+	\printfield{pages}\addcomma
+	\newunit\newblock
+	\printfield{doi}
+	\finentry
+}
+
+\DeclareBibliographyDriver{misc}{
+	\printnames{author}%
+	\newunit\newblock
+	\printfield{title}%
+	\newunit\newblock
+	\printfield{year}\addcomma%	
+	\newunit\newblock
+	\usebibmacro{url+urldate}
+	\finentry
+}
+
+%%%%%%%%%%%%%%%%%%% citation/bibliography macros %%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewbibmacro{url+urldate}{%
+	\printfield{url}
+	\addcomma\addspace
+	[%
+	\usebibmacro{urldate}%
+	]%
+}
+
+\renewbibmacro{urldate}{%
+	\printfield{urlyear}-%
+	\printfield{urlmonth}-%
+	\printfield{urlday}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%% custom formats %%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareNameFormat{author}{
+	\MakeUppercase{\namepartfamily}%
+	\ifdefvoid{\namepartgiven}{}{%
+		\addcomma\space\MakeUppercase{\namepartgiven}}%
+	\ifthenelse{\value{listcount}<\value{liststop}}%
+	{\space/}{:}%
+}
+
+\DeclareNameFormat{editor}{
+	\MakeUppercase{\namepartfamily}%
+	\ifdefvoid{\namepartgiven}{}{%
+		\addcomma\space\MakeUppercase{\namepartgiven}}%
+	\ifthenelse{\value{listcount}<\value{liststop}}%
+	{\space/}{:}%
+}
+
+\DeclareListFormat{location}{%
+	#1%
+	\ifthenelse{\value{listcount}<\value{liststop}}
+	{\addcomma\space}{\addspace}
+}
+
+\DeclareFieldFormat{pages}{
+	\bibstring{pages} #1
+}
+
+\DeclareFieldFormat*{urlyear}{%
+	\mkdatezeros{#1}%
+}
+
+\DeclareFieldFormat{urlmonth}{%
+	\mkdatezeros{#1}%
+}
+
+\DeclareFieldFormat{urlday}{%
+	\mkdatezeros{#1}%
+}
+
+\DeclareFieldFormat{title}{
+	#1,%
+}
+
+\DeclareFieldFormat{booktitle}{
+	#1,%
+}
+
+\DeclareFieldFormat{journaltitle}{
+	#1,%
+}
+
+\DeclareFieldFormat*{volume}
+{\bibstring{volume}\addnbspace#1}
+
+\DeclareFieldFormat*{number}
+{\bibstring{number}\addnbspace#1}
+
+\DeclareNameFormat{iwifootname}{%
+	\namepartfamily%
+	\ifthenelse{\value{listcount}<\value{liststop}}%
+	{/}{}%
+	\ifthenelse{\value{liststop}<\value{listtotal}}{ et al.}{}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%% citation commands %%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareCiteCommand{iwicite}[\mkbibfootnote]{\addspace\printfield{prenote}}{
+	\printnames[iwifootname]{author}
+	\printfield{year}
+}{}{\addcomma\addspace\printfield{postnote}}
+
+\DeclareMultiCiteCommand{\iwicites}%
+	[\mkbibfootnote]%
+	{\iwicite}%
+	{\multicitedelim}
+
+\DeclareCiteCommand{iwiciteintext}[]{\addspace\printfield{prenote}}{
+	\printnames[iwifootname]{author}
+	\printfield{year}
+}{}{\addcomma\addspace\printfield{postnote}}
+
+\DeclareCiteCommand{iwiurlcite}[\mkbibfootnote]{\addspace\printfield{prenote}}{
+	\printnames[iwifootname]{author}
+	\printfield{year},
+	\bibstring{urlseen}: %Abrufdatum: 
+	\usebibmacro{urldate}
+}{}{\printfield{postnote}}
+
+\DeclareMultiCiteCommand{\iwiurlcites}%
+	[\mkbibfootnote]%
+	{\iwiurlcite}%
+	{\multicitedelim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\addbibresource{references.bib}
+
