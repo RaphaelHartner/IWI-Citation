@@ -1,6 +1,11 @@
 # IWI-Citation
 The content of this repository allows you to set up your latex project with the specific Industrial Management (IWI) citation style
 
+## prerequisites
+- must be used with biblatex
+- german or english are the only supported languages
+- necessary entry fields (.bib file) must be available
+
 ## include/input the preamble extension in your original preamble file
 \input{chapters/00_preamble_iwi_citation} 
 
