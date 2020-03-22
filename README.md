@@ -5,6 +5,7 @@ The content of this repository allows you to set up your latex project with the 
 - must be used with biblatex
 - german or english are the only supported languages
 - necessary entry fields (.bib file) must be available
+- continous foot note numbering via the "chngcntr" package
 
 ## include/input the preamble extension in your original preamble file
 \input{chapters/00_preamble_iwi_citation} 
@@ -14,6 +15,10 @@ The content of this repository allows you to set up your latex project with the 
 
 ## change your language (main.tex), if necessary
 \selectlanguage{english} %citation can be used with german or english
+
+## enable continous foot note numbering
+\usepackage{chngcntr}
+\counterwithout{footnote}{chapter}
 
 ## currently supported entry types
 - @book -> book
