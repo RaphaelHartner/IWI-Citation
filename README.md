@@ -18,6 +18,7 @@ The content of this repository allows you to set up your latex project with the 
 
 ## enable continous foot note numbering
 \usepackage{chngcntr}
+
 \counterwithout{footnote}{chapter}
 
 ## currently supported entry types
