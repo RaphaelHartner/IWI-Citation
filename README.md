@@ -34,3 +34,6 @@ The content of this repository allows you to set up your latex project with the 
 - \iwiurlcite[Cf.][]{Anaconda2019}
 -	\iwiurlcites[Cf.][]{Anaconda2019}[Cf.][]{Vantara2018}
 -	\footnote{[Note] It's a foot note \iwiciteintext[Cf.][p. 60]{Batini2006}.}
+
+## known issues
+- including both, DOI 10.1109/CCDC.2018.8407931 and DOI 10.1109/CYBConf.2017.7985808, in the reference.bib file led to some strange behaviors while citing one them
