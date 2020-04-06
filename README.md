@@ -14,6 +14,7 @@ The content of this repository allows you to set up your latex project with the 
 \addbibresource{references.bib}
 
 ## change your language (main.tex), if necessary
+\usepackage[english, german]{babel}
 \selectlanguage{english} %citation can be used with german or english
 
 ## enable continous foot note numbering
