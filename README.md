@@ -36,5 +36,12 @@ The content of this repository allows you to set up your latex project with the 
 -	\iwiurlcites[Cf.][]{Anaconda2019}[Cf.][]{Vantara2018}
 -	\footnote{[Note] It's a foot note \iwiciteintext[Cf.][p. 60]{Batini2006}.}
 
+## caption (table/figure) examples
+- use \footnotemark within the table/figure caption
+- after the "table" or "figure" environment, use one of the following alternatives to declare your citation text
+  - \iwicaptioncite[Cf.][p. 300, 234]{Feng2018a} for single citation
+  - \iwicaptioncites[Cf.][p. 300, 234]{Feng2018a}[Cf.][p. 300, 234]{Feng2018a} for multiple citation
+  - \footnotetext{[Note] you can use it even with additional text[Cf.][p. 300, 234]{Feng2018a}}
+
 ## known issues
 - including both, DOI 10.1109/CCDC.2018.8407931 and DOI 10.1109/CYBConf.2017.7985808, in the reference.bib file led to some strange behaviors while citing one them
