@@ -41,7 +41,7 @@ The content of this repository allows you to set up your latex project with the 
 - after the "table" or "figure" environment, use one of the following alternatives to declare your citation text
   - \iwicaptioncite[Cf.][p. 300, 234]{Feng2018a} for single citation
   - \iwicaptioncites[Cf.][p. 300, 234]{Feng2018a}[Cf.][p. 300, 234]{Feng2018a} for multiple citation
-  - \footnotetext{[Note] you can use it even with additional text[Cf.][p. 300, 234]{Feng2018a}}
+  - \footnotetext{[Note] you can use it even with additional text \iwiciteintext[Cf.][p. 300, 234]{Feng2018a}.}
 
 ## known issues/workarounds 
 - including both, Lughofer et al. (2017, DOI 10.1109/CCDC.2018.8407931) and Lughofer et al. (2018, DOI 10.1109/CYBConf.2017.7985808), in the reference.bib file leads to some strange behaviors while citing one them
