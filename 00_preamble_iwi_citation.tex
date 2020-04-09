@@ -256,6 +256,22 @@
 	\printfield{year}
 }{}{\addcomma\addspace\printfield{postnote}}
 
+\DeclareMultiCiteCommand{\iwiciteintextmulti}%
+	[]%
+	{iwiciteintext}%
+{\multicitedelim}
+
+\DeclareCiteCommand{iwicaptioncite}[\mkbibfootnotetext]{\addspace\printfield{prenote}}{
+	\printnames[iwifootname]{author}
+	\printfield{year}
+}{}{\addcomma\addspace\printfield{postnote}}
+
+\DeclareMultiCiteCommand{\iwicaptioncites}%
+[\mkbibfootnotetext]%
+{\iwicaptioncite}%
+{\multicitedelim}
+
+
 \DeclareCiteCommand{iwiurlcite}[\mkbibfootnote]{\addspace\printfield{prenote}}{
 	\printnames[iwifootname]{author}
 	\printfield{year},
@@ -270,6 +286,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+\setlength{\bibitemsep}{1em}
 \addbibresource{references.bib}
 
