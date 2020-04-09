@@ -43,5 +43,6 @@ The content of this repository allows you to set up your latex project with the 
   - \iwicaptioncites[Cf.][p. 300, 234]{Feng2018a}[Cf.][p. 300, 234]{Feng2018a} for multiple citation
   - \footnotetext{[Note] you can use it even with additional text[Cf.][p. 300, 234]{Feng2018a}}
 
-## known issues
-- including both, DOI 10.1109/CCDC.2018.8407931 and DOI 10.1109/CYBConf.2017.7985808, in the reference.bib file led to some strange behaviors while citing one them
+## known issues/workarounds 
+- including both, Lughofer et al. (2017, DOI 10.1109/CCDC.2018.8407931) and Lughofer et al. (2018, DOI 10.1109/CYBConf.2017.7985808), in the reference.bib file leads to some strange behaviors while citing one them
+- when using the in-text citation command (single source), one needs do explicitly specify the punctuation afterwards
