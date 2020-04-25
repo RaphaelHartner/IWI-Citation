@@ -275,9 +275,8 @@
 \DeclareCiteCommand{iwiurlcite}[\mkbibfootnote]{\addspace\printfield{prenote}}{
 	\printnames[iwifootname]{author}
 	\printfield{year},
-	\bibstring{urlseen}: %Abrufdatum: 
-	\usebibmacro{urldate}
-}{}{\printfield{postnote}}
+}{}{\printfield{postnote}\bibstring{urlseen}: %Abrufdatum: 
+\usebibmacro{urldate}}
 
 \DeclareMultiCiteCommand{\iwiurlcites}%
 	[\mkbibfootnote]%
