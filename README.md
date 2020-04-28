@@ -26,6 +26,7 @@ The content of this repository allows you to set up your latex project with the 
 - @book -> book
 - @incollection -> chapter in book
 - @article -> journal paper
+  - use "issue" instead of "number" to define the journal issue number
 - @inprocedings -> conference
 - @misc -> website
 
