@@ -283,6 +283,12 @@
 	{\iwiurlcite}%
 	{\multicitedelim}
 
+\DeclareCiteCommand{iwiurlciteintext}[]{\addspace\printfield{prenote}}{
+	\printnames[iwifootname]{author}
+	\printfield{year},
+}{}{\printfield{postnote}\bibstring{urlseen}: %Abrufdatum: 
+	\usebibmacro{urldate}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setlength{\bibitemsep}{1em}
