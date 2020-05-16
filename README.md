@@ -37,6 +37,7 @@ The content of this repository allows you to set up your latex project with the 
 - \iwiurlcite[Cf.][p. 9, 11, 16, ]{Geissbauer2017a}
 -	\iwiurlcites[Cf.][]{Anaconda2019}[Cf.][]{Vantara2018}
 -	\footnote{[Note] It's a foot note \iwiciteintext[Cf.][p. 60]{Batini2006}.}
+- \footnote{[Note] It's a foot note \iwiurlciteintext[Cf.][]{VESCONGroup2020}.}
 
 ## caption (table/figure) examples
 - use \footnotemark within the table/figure caption
