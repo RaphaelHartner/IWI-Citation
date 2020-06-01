@@ -261,6 +261,13 @@
 	{iwiciteintext}%
 {\multicitedelim}
 
+\DeclareCiteCommand{iwiciteauthoryear}[]{}{
+	\printnames[iwifootname]{author}
+	\printfield{year}
+}{}{}
+
+
+
 \DeclareCiteCommand{iwicaptioncite}[\mkbibfootnotetext]{\addspace\printfield{prenote}}{
 	\printnames[iwifootname]{author}
 	\printfield{year}
