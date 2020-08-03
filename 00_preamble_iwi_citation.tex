@@ -241,7 +241,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% citation commands %%%%%%%%%%%%%%%%%%%%%%%%%
 
-\DeclareCiteCommand{iwicite}[\mkbibfootnote]{\addspace\printfield{prenote}}{
+\DeclareCiteCommand{iwicite}[\mkbibfootnote]{\printfield{prenote}}{
 	\printnames[iwifootname]{author}
 	\printfield{year}
 }{}{\addcomma\addspace\printfield{postnote}}
@@ -261,14 +261,18 @@
 	{iwiciteintext}%
 {\multicitedelim}
 
-\DeclareCiteCommand{iwiciteauthoryear}[]{}{
+\DeclareCiteCommand{iwiciteauthoryear}[]{}{%
 	\printnames[iwifootname]{author}
 	\printfield{year}
 }{}{}
 
+\DeclareCiteCommand{iwiciteauthor}[]{}{%
+	\printnames[iwifootname]{author}%
+}{}{}
 
 
-\DeclareCiteCommand{iwicaptioncite}[\mkbibfootnotetext]{\addspace\printfield{prenote}}{
+
+\DeclareCiteCommand{iwicaptioncite}[\mkbibfootnotetext]{\printfield{prenote}}{
 	\printnames[iwifootname]{author}
 	\printfield{year}
 }{}{\addcomma\addspace\printfield{postnote}}
@@ -279,7 +283,7 @@
 {\multicitedelim}
 
 
-\DeclareCiteCommand{iwiurlcite}[\mkbibfootnote]{\addspace\printfield{prenote}}{
+\DeclareCiteCommand{iwiurlcite}[\mkbibfootnote]{\printfield{prenote}}{
 	\printnames[iwifootname]{author}
 	\printfield{year},
 }{}{\printfield{postnote}\bibstring{urlseen}: %Abrufdatum: 
@@ -296,6 +300,10 @@
 }{}{\printfield{postnote}\bibstring{urlseen}: %Abrufdatum: 
 	\usebibmacro{urldate}}
 
+\DeclareMultiCiteCommand{\iwiurlciteintextmulti}%
+[]%
+{iwiurlciteintext}%
+{\multicitedelim}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setlength{\bibitemsep}{1em}
